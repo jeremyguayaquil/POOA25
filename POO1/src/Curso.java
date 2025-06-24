@@ -4,6 +4,20 @@ public class Curso {
     public String modalidad;
     public Date fechaVigencia;
 
+    public Curso() {
+        this.fechaVigencia = new Date();
+    }
+
+    public Curso(String modalidad) {
+        this.modalidad = "EXCELENTE";
+        this.fechaVigencia = new Date();
+    }
+
+    public Curso(String nombre1, Date nombre2) {
+        this.modalidad = nombre1;
+        this.fechaVigencia = nombre2;
+    }
+
     public String dictar(String mensaje) {
         return "El curso dictado es " + mensaje +
                 " en la modalidad " + this.modalidad +

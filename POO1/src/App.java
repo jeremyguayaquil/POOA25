@@ -3,9 +3,13 @@ import java.util.Date;
 public class App {
     public static void main(String[] args) throws Exception {
         String mensaje = "";
-        Curso matematica = new Curso();
-        matematica.modalidad = "Virtual";
-        matematica.fechaVigencia = new Date();
+
+        Curso poo = new Curso("En la calle");
+        // poo.modalidad = "en la buseta";
+        mensaje = poo.dictar("programacion orientada a objeto");
+        System.out.println(mensaje);
+
+        Curso matematica = new Curso("Virtual", new Date());
 
         mensaje = matematica.dictar("matematicas");
         System.out.println(mensaje);
@@ -15,14 +19,12 @@ public class App {
 
         Curso geografia = new Curso();
         geografia.modalidad = "Presencial";
-        geografia.fechaVigencia = new Date();
 
         mensaje = geografia.dictar("geografía");
         System.out.println(mensaje);
 
         Curso ingles = new Curso();
         ingles.modalidad = "Semi-Presencial";
-        ingles.fechaVigencia = new Date();
 
         mensaje = ingles.dictar("inglés");
         System.out.println(mensaje);
@@ -34,5 +36,15 @@ public class App {
         roberto.hobbie = "futbol";
 
         System.out.println("La persona " + roberto.nombre + " tiene " + roberto.getEdad() + " años.");
+
+        Alumno nadya = new Alumno();
+        nadya.nombre = "Nadya";
+        nadya.hobbie = "Bailar";
+
+        Profesor walther = new Profesor();
+        walther.nombre = "Joao";
+        walther.hobbie = "Nadar";
+        System.out.println(
+                "El nombre del profesor es " + walther.nombre + " el hobbie que practica es " + walther.hobbie);
     }
 }

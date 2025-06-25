@@ -65,4 +65,19 @@ public class Persona {
         return "El estudiante con identificación  " + persona.identificacion + " esta " + mensaje;
     }
 
+    public String reprobar(Persona persona, String mensaje) {
+        return "El estudiante  " + persona.nombre + " esta reprobando " + mensaje;
+    }
+
+    public String logroAcademico(Persona persona) {
+        return "El estudiante " + persona.nombre + " ha conseguido un logro académico ";
+    }
+
+    public String respirar(Persona persona) {
+        return "El estudiante " + persona.nombre + " este respirando ";
+    }
+
+    public String recrear(Persona persona) {
+        return "El estudiante " + persona.nombre + " se esta recreando ";
+    }
 }

@@ -4,6 +4,7 @@ public class Alumno extends Persona {
 
     public Alumno(int edadRecibido) {
         super(edadRecibido);
+        this.nombre = "Eduardo";
     }
 
     public String hacerDeberes(Alumno alumno) {

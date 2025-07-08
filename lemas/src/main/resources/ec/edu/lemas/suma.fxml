@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="593.0" style="-fx-background-color: #dcfbfc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.lemas.SumaController">
+   <children>
+      <Button fx:id="btnSumar" layoutX="268.0" layoutY="175.0" mnemonicParsing="false" onAction="#sumar" text="Sumar" />
+      <TextField fx:id="txtNumero1" layoutX="300.0" layoutY="42.0" />
+      <Label layoutX="87.0" layoutY="46.0" text="Nùmero 1" />
+      <Label layoutX="86.0" layoutY="88.0" text="Nùmero 2" />
+      <TextField fx:id="txtNumero2" layoutX="300.0" layoutY="84.0" />
+   </children>
+</Pane>

@@ -131,6 +131,10 @@ public class VeterinariaController {
         for (VeterinariaEntity entity : veterinariaList) {
             try {
                 VeterinariaDAO dao = new VeterinariaDAO();
+                VeterinariaEntity veterinarioExiste = dao.getVeterinariaEntitybyNombreAnimalRazaEdad(entity);
+                if (veterinarioExiste != null) {
+                    continue; // Si ya existe, no lo guardamos de nuevo
+                }
                 boolean isSaved = dao.saveVeterinaria(entity);
                 if (isSaved) {
                     alertarFormulario(Alert.AlertType.INFORMATION, "Éxito", "Registro guardado",

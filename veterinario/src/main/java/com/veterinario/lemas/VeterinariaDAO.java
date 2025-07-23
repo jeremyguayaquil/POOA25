@@ -62,4 +62,30 @@ public class VeterinariaDAO {
         }
         return lstVeterinario;
     }
+
+    public VeterinariaEntity getVeterinariaEntitybyNombreAnimalRazaEdad(VeterinariaEntity entity) throws SQLException {
+        String query = "SELECT * FROM info_veterinario " +
+                "WHERE nombre = ? AND animal = ? AND raza = ? AND edad = ?";
+        try (Connection connection = connectionDB.connect();
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, entity.getNombre());
+            preparedStatement.setString(2, entity.getAnimal());
+            preparedStatement.setString(3, entity.getRaza());
+            preparedStatement.setInt(4, entity.getEdad());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                VeterinariaEntity foundEntity = new VeterinariaEntity();
+                foundEntity.setNombre(resultSet.getString("nombre"));
+                foundEntity.setAnimal(resultSet.getString("animal"));
+                foundEntity.setRaza(resultSet.getString("raza"));
+                foundEntity.setEdad(resultSet.getInt("edad"));
+                return foundEntity;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al buscar el registro: " + e.getMessage());
+        } finally {
+            connectionDB.disconnect();
+        }
+        return null;
+    }
 }

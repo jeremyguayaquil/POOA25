@@ -1,5 +1,7 @@
 package com.veterinario.lemas;
 
+import java.sql.SQLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -61,6 +63,14 @@ public class VeterinariaController {
         tclRaza.setCellValueFactory(new PropertyValueFactory<VeterinariaEntity, String>("raza"));
         tclEdad.setCellValueFactory(new PropertyValueFactory<VeterinariaEntity, Integer>("edad"));
 
+        // Cargar los datos iniciales desde la base de datos
+        try {
+            VeterinariaDAO dao = new VeterinariaDAO();
+            veterinariaList.addAll(dao.getAllVeterinarias());
+        } catch (SQLException e) {
+            alertarFormulario(Alert.AlertType.ERROR, "Error", "Error de base de datos",
+                    "No se pudo conectar a la base de datos: " + e.getMessage());
+        }
         // Vincular la lista observable a la tabla
         tclVeterinaria.setItems(veterinariaList);
     }
@@ -118,7 +128,22 @@ public class VeterinariaController {
 
     @FXML
     void guardar(ActionEvent event) {
-
+        for (VeterinariaEntity entity : veterinariaList) {
+            try {
+                VeterinariaDAO dao = new VeterinariaDAO();
+                boolean isSaved = dao.saveVeterinaria(entity);
+                if (isSaved) {
+                    alertarFormulario(Alert.AlertType.INFORMATION, "Éxito", "Registro guardado",
+                            "El registro se ha guardado correctamente.");
+                } else {
+                    alertarFormulario(Alert.AlertType.ERROR, "Error", "No se pudo guardar el registro",
+                            "Hubo un error al guardar el registro.");
+                }
+            } catch (SQLException e) {
+                alertarFormulario(Alert.AlertType.ERROR, "Error", "Error de base de datos",
+                        "No se pudo conectar a la base de datos: " + e.getMessage());
+            }
+        }
     }
 
     @FXML

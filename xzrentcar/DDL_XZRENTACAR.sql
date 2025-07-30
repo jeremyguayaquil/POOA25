@@ -6,6 +6,7 @@ CREATE TABLE xzrentcar.info_renta (
     marca VARCHAR(127),
     fe_nacimiento DATE,
     tiene_tc VARCHAR(3),
+    fe_creacion date,
     usr_creacion varchar(63),
     estado varchar(15),
     fecha_modificacion date,

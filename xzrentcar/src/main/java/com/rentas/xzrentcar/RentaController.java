@@ -1,5 +1,7 @@
 package com.rentas.xzrentcar;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -136,18 +140,51 @@ public class RentaController {
 
         // Agregar la entidad a la lista y actualizar la tabla
         lstRenta.add(renta);
+
+        limpiarFormulario();
     }
 
     private boolean validarCampos() {
         if (!cbxTienetc.isSelected()) {
+            mostrarAlertaUsuario(Alert.AlertType.ERROR, "Error", "Debe seleccionar si tiene tarjeta de crédito.");
+            return false;
+        } else if (!esMayorEdad(dpFeNacimiento.getValue())) {
+            mostrarAlertaUsuario(Alert.AlertType.ERROR, "Error", "La persona es menor de edad");
             return false;
         }
         return true;
     }
 
+    private boolean esMayorEdad(LocalDate feNacimiento) {
+        LocalDate today = LocalDate.now(); // Get the current date
+
+        // Calculate the period between today and the birth date
+        Period agePeriod = Period.between(feNacimiento, today);
+
+        // Check if the calculated age in years is greater than or equal to the required
+        // age
+        return agePeriod.getYears() >= 18;
+    }
+
+    private void mostrarAlertaUsuario(AlertType alerta, String titulo, String contenido) {
+        Alert alert = new Alert(alerta);
+        alert.setTitle(titulo);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
     @FXML
     void limpiar(ActionEvent event) {
+        limpiarFormulario();
+    }
 
+    void limpiarFormulario() {
+        txtDNI.clear();
+        txtNombre.clear();
+        cmbModelo.getSelectionModel().clearSelection();
+        txtMarca.clear();
+        dpFeNacimiento.setValue(null);
+        cbxTienetc.setSelected(false);
     }
 
 }

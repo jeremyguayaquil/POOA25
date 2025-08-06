@@ -15,7 +15,6 @@ public class ConectarBD {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         }
-        System.out.println("Conexión exitosa a la base de datos");
         return connection;
     }
 

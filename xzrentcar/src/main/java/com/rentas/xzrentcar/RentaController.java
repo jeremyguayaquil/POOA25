@@ -1,9 +1,11 @@
 package com.rentas.xzrentcar;
 
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -86,6 +88,15 @@ public class RentaController {
         // Vincular la lista observable a la tabla
         tblRenta.setItems(lstRenta);
 
+        RentaDAO objRenta = new RentaDAO(new ConectarBD());
+        List<RentaEntity> lstRentaEntity;
+        try {
+            lstRentaEntity = objRenta.recuperarRegistro();
+            lstRenta.addAll(lstRentaEntity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void llenarComboModelo() {
@@ -124,8 +135,10 @@ public class RentaController {
         String modelo = cmbModelo.getSelectionModel().getSelectedItem().getModelo();
         Date feNacimiento = null;
         if (dpFeNacimiento.getValue() != null) {
-            feNacimiento = java.util.Date
-                    .from(dpFeNacimiento.getValue().atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
+            feNacimiento = new java.sql.Date(
+                    java.util.Date
+                            .from(dpFeNacimiento.getValue().atStartOfDay(java.time.ZoneId.systemDefault()).toInstant())
+                            .getTime());
         }
         String tieneTc = cbxTienetc.isSelected() ? "Si" : "No";
 
@@ -141,6 +154,31 @@ public class RentaController {
         // Agregar la entidad a la lista y actualizar la tabla
         lstRenta.add(renta);
 
+        // Guardar Objeto creado en la base de datos
+        InfoRentaModel objetoInfoRenta = new InfoRentaModel();
+        objetoInfoRenta.setDni(dni);
+        objetoInfoRenta.setNombres(nombres);
+        objetoInfoRenta.setModelo(modelo);
+        objetoInfoRenta.setMarca(marca);
+        objetoInfoRenta.setFeNacimiento(feNacimiento);
+        objetoInfoRenta.setTieneTC(tieneTc);
+        objetoInfoRenta.setFeCreacion(java.sql.Date.valueOf(LocalDate.now()));
+        objetoInfoRenta.setUsrCreacion("wgaibor");
+        objetoInfoRenta.setEstado("Activo");
+
+        RentaDAO rentaDAO = new RentaDAO(new ConectarBD());
+        try {
+            boolean seGuardo = rentaDAO.guardarRenta(objetoInfoRenta);
+            if (seGuardo) {
+                mostrarAlertaUsuario(AlertType.CONFIRMATION, "Guardar Registro",
+                        "Se guardo el registro en la base de datos");
+            } else {
+                mostrarAlertaUsuario(AlertType.ERROR, "Guardar Registro", "No se pudo guardar el registro");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mostrarAlertaUsuario(AlertType.ERROR, "Guardar Registro", "Error tecnico");
+        }
         limpiarFormulario();
     }
 

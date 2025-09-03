@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double kilobytes, megabytes;
+
+    // Solicitar la cantidad de kilobytes al usuario
+    cout << "Introduce la cantidad de kilobytes (KB): ";
+    cin >> kilobytes;
+
+    // Convertir a megabytes
+    megabytes = kilobytes / 1024;
+
+    // Mostrar el resultado
+    cout << kilobytes << " KB son equivalentes a " << megabytes << " MB." << endl;
+
+    return 0;
+}
+# Solicitar la cantidad de kilobytes al usuario
+kilobytes = float(input("Introduce la cantidad de kilobytes (KB): "))
+
+# Convertir a megabytes
+megabytes = kilobytes / 1024
+
+# Mostrar el resultado
+print(f"{kilobytes} KB son equivalentes a {megabytes} MB.")

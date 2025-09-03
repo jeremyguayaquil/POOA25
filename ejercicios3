@@ -1,0 +1,52 @@
+#include <iostream>
+#include <iomanip> // Para usar setw y alinear las columnas
+
+using namespace std;
+
+int main() {
+    // Arreglos con las palabras en inglés y su traducción al castellano
+    string ingles[10] = {"apple", "book", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jacket"};
+    string espanol[10] = {"manzana", "libro", "gato", "perro", "elefante", "flor", "guitarra", "casa", "isla", "chaqueta"};
+
+    // Mostrar las palabras en dos columnas alineadas a la izquierda
+    cout << left << setw(15) << "Inglés" << "Castellano" << endl;
+    cout << "-----------------------------" << endl;
+    for (int i = 0; i < 10; i++) {
+        cout << setw(15) << ingles[i] << espanol[i] << endl;
+    }
+
+    return 0;
+}
+Inglés          Castellano
+-----------------------------
+apple           manzana
+book            libro
+cat             gato
+dog             perro
+elephant        elefante
+flower          flor
+guitar          guitarra
+house           casa
+island          isla
+jacket          chaqueta
+# Listas con las palabras en inglés y su traducción al castellano
+ingles = ["apple", "book", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jacket"]
+espanol = ["manzana", "libro", "gato", "perro", "elefante", "flor", "guitarra", "casa", "isla", "chaqueta"]
+
+# Mostrar las palabras en dos columnas alineadas a la izquierda
+print(f"{'Inglés':<15} {'Castellano'}")
+print("-" * 30)
+for i in range(10):
+    print(f"{ingles[i]:<15} {espanol[i]}")
+Inglés          Castellano
+------------------------------
+apple           manzana
+book            libro
+cat             gato
+dog             perro
+elephant        elefante
+flower          flor
+guitar          guitarra
+house           casa
+island          isla
+jacket          chaqueta

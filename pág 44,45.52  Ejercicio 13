@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c;
+
+    // Solicitar los tres números al usuario
+    cout << "Introduce tres números enteros: ";
+    cin >> a >> b >> c;
+
+    // Ordenar los números utilizando condicionales
+    if (a > b) swap(a, b);
+    if (a > c) swap(a, c);
+    if (b > c) swap(b, c);
+
+    // Mostrar los números ordenados
+    cout << "Los números ordenados son: " << a << " " << b << " " << c << endl;
+
+    return 0;
+}
+# Solicitar los tres números al usuario
+a, b, c = map(int, input("Introduce tres números enteros separados por espacio: ").split())
+
+# Ordenar los números utilizando condicionales
+if a > b: a, b = b, a
+if a > c: a, c = c, a
+if b > c: b, c = c, b
+
+# Mostrar los números ordenados
+print("Los números ordenados son:", a, b, c)

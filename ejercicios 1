@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string nombre, direccion, telefono;
+
+    // Solicitar datos al usuario
+    cout << "Introduce tu nombre: ";
+    getline(cin, nombre);
+    cout << "Introduce tu direccion: ";
+    getline(cin, direccion);
+    cout << "Introduce tu telefono: ";
+    getline(cin, telefono);
+
+    // Mostrar los datos en líneas separadas
+    cout << "\nDatos ingresados:\n";
+    cout << "Nombre: " << nombre << endl;
+    cout << "Direccion: " << direccion << endl;
+    cout << "Telefono: " << telefono << endl;
+
+    return 0;
+}
+# Solicitar datos al usuario
+nombre = input("Introduce tu nombre: ")
+direccion = input("Introduce tu direccion: ")
+telefono = input("Introduce tu telefono: ")
+
+# Mostrar los datos en líneas separadas
+print("\nDatos ingresados:")
+print("Nombre:", nombre)
+print("Direccion:", direccion)
+print("Telefono:", telefono)

@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double horas_trabajadas, salario;
+
+    // Solicitar las horas trabajadas al usuario
+    cout << "Introduce el número de horas trabajadas en la semana: ";
+    cin >> horas_trabajadas;
+
+    // Calcular el salario
+    if (horas_trabajadas <= 40) {
+        salario = horas_trabajadas * 12;
+    } else {
+        salario = (40 * 12) + ((horas_trabajadas - 40) * 18); // 12 euros por hora normal, 18 euros por hora extra
+    }
+
+    // Mostrar el salario
+    cout << "El salario semanal es: " << salario << " euros." << endl;
+
+    return 0;
+}
+# Solicitar las horas trabajadas al usuario
+horas_trabajadas = float(input("Introduce el número de horas trabajadas en la semana: "))
+
+# Calcular el salario
+if horas_trabajadas <= 40:
+    salario = horas_trabajadas * 12
+else:
+    salario = (40 * 12) + ((horas_trabajadas - 40) * 18)  # 12 euros por hora normal, 18 euros por hora extra
+
+# Mostrar el salario
+print(f"El salario semanal es: {salario} euros.")

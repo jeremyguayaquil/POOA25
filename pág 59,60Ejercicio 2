@@ -1,0 +1,21 @@
+# Inicializamos el contador en 0
+i = 0
+
+# Utilizamos un bucle while para mostrar los múltiplos de 5
+while i <= 100:
+    print(i)
+    i += 5  # Incrementamos en 5 en cada iteración
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0;
+
+    // Utilizamos un bucle while para mostrar los múltiplos de 5
+    while (i <= 100) {
+        cout << i << endl;
+        i += 5;  // Incrementamos en 5 en cada iteración
+    }
+
+    return 0;
+}

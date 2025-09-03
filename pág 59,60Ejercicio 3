@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0;
+
+    // Bucle do-while para mostrar los múltiplos de 5
+    do {
+        cout << i << endl;
+        i += 5;  // Incrementamos en 5 en cada iteración
+    } while (i <= 100);
+
+    return 0;
+}

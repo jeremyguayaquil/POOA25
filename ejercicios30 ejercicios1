@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double num1, num2, producto;
+
+    // Solicitar los números al usuario
+    cout << "Introduce el primer número: ";
+    cin >> num1;
+    cout << "Introduce el segundo número: ";
+    cin >> num2;
+
+    // Calcular el producto
+    producto = num1 * num2;
+
+    // Mostrar el resultado
+    cout << "El producto de " << num1 << " y " << num2 << " es: " << producto << endl;
+
+    return 0;
+}
+# Solicitar los números al usuario
+num1 = float(input("Introduce el primer número: "))
+num2 = float(input("Introduce el segundo número: "))
+
+# Calcular el producto
+producto = num1 * num2
+
+# Mostrar el resultado
+print(f"El producto de {num1} y {num2} es: {producto}")

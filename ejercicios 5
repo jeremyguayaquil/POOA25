@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    float base, altura, area;
+
+    // Solicitar las medidas del rectángulo al usuario
+    cout << "Ingrese la base del rectángulo: ";
+    cin >> base;
+    cout << "Ingrese la altura del rectángulo: ";
+    cin >> altura;
+
+    // Calcular el área
+    area = base * altura;
+
+    // Mostrar el resultado
+    cout << "El área del rectángulo es: " << area << endl;
+
+    return 0;
+}
+# Solicitar las medidas del rectángulo al usuario
+base = float(input("Ingrese la base del rectángulo: "))
+altura = float(input("Ingrese la altura del rectángulo: "))
+
+# Calcular el área
+area = base * altura
+
+# Mostrar el resultado
+print(f"El área del rectángulo es: {area}")

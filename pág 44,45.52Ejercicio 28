@@ -1,0 +1,40 @@
+def obtener_jugada(jugador):
+    """Solicita y valida la jugada de un jugador."""
+    while True:
+        jugada = input(f"Jugador {jugador}, elige piedra, papel o tijera: ").lower()
+        if jugada in ["piedra", "papel", "tijera"]:
+            return jugada
+        else:
+            print("Opción no válida. Por favor, elige entre 'piedra', 'papel' o 'tijera'.")
+
+def determinar_ganador(jugada1, jugada2):
+    """Determina el ganador según las reglas del juego."""
+    if jugada1 == jugada2:
+        return "Empate"
+    elif (jugada1 == "piedra" and jugada2 == "tijera") or \
+         (jugada1 == "papel" and jugada2 == "piedra") or \
+         (jugada1 == "tijera" and jugada2 == "papel"):
+        return "Jugador 1 gana"
+    else:
+        return "Jugador 2 gana"
+
+def jugar():
+    """Función principal del juego."""
+    print("Bienvenidos al juego de Piedra, Papel o Tijera.")
+    jugada1 = obtener_jugada(1)
+    jugada2 = obtener_jugada(2)
+    print(f"\nJugador 1 eligió: {jugada1}")
+    print(f"Jugador 2 eligió: {jugada2}")
+    resultado = determinar_ganador(jugada1, jugada2)
+    print(f"\nResultado: {resultado}")
+
+if __name__ == "__main__":
+    jugar()
+Bienvenidos al juego de Piedra, Papel o Tijera.
+Jugador 1, elige piedra, papel o tijera: piedra
+Jugador 2, elige piedra, papel o tijera: tijera
+
+Jugador 1 eligió: piedra
+Jugador 2 eligió: tijera
+
+Resultado: Jugador 1 gana
